@@ -87,7 +87,22 @@ export default function Lander() {
         ></video>
       </div>
       <div className="absolute bottom-0 mb-10 text-black  m-auto left-0 right-0 text-center items-center ">
-        <p className="">Where curiosity meets community</p>
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: 25,
+            filter: "blur(20px)",
+          }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{
+            duration: 1,
+            delay: 0.8,
+            ease: "easeInOut",
+          }}
+          className=""
+        >
+          Where curiosity meets community
+        </motion.p>
       </div>
     </div>
   );
