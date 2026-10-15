@@ -37,8 +37,8 @@ export default function About() {
       <div
         className={`w-screen h-1/5 bg-stone-500 bg-stone-100 text-center flex items-center justify- text-xl text-justify px-20 font-extrabold text-stone-200`}
       >
-        Diverse teams, one shared horizon - exploring the frontiers of what&apos;s
-        possible.
+        Diverse teams, one shared horizon - exploring the frontiers of
+        what&apos;s possible.
       </div>
     </div>
   );

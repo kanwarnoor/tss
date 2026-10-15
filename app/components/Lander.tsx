@@ -3,18 +3,16 @@
 import { motion } from "framer-motion";
 import Button from "./Button";
 
-const letters = ["T", "S", "S"];
-
 export default function Lander() {
   return (
     <div className="flex">
       <div className="h-screen w-full flex items-center justify-center gap-10 text-black">
-        <p className="text-[15rem] font-extrabold  flex ">
-          {letters.map((letter, i) => (
+        <p className="text-[18rem] h-52 justify-center items-center  font-extrabold  flex ">
+          {["T", "S", "S"].map((letter, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, x: 50, filter: "blur(20px)" }}
-              animate={{ opacity: 1, x: 0, filter: `blur(${i * 2}px)` }}
+              whileInView={{ opacity: 1, x: 0, filter: `blur(${i * 2}px)` }}
               transition={{
                 duration: 1,
                 delay: i * 0.15,
@@ -26,10 +24,19 @@ export default function Lander() {
             </motion.span>
           ))}
         </p>
-        <div className="flex flex-col">
+        <motion.div
+          initial={{ opacity: 0, x: -50, filter: "blur(20px)" }}
+          whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+          transition={{
+            duration: 1,
+            delay: 0.2,
+            ease: "easeInOut",
+          }}
+          className="flex flex-col h-52 p-10 rounded-xl bg-white/10 border-2 border-black/10 backdrop-blur-sm my-auto justify-center items-left"
+        >
           <motion.p
             initial={{ opacity: 0, x: -50, filter: "blur(20px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             transition={{
               duration: 1,
               delay: 0.2,
@@ -41,7 +48,7 @@ export default function Lander() {
           </motion.p>
           <motion.p
             initial={{ opacity: 0, x: -25, filter: "blur(20px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             transition={{
               duration: 1,
               delay: 0.5,
@@ -57,12 +64,13 @@ export default function Lander() {
               x: -25,
               filter: "blur(20px)",
             }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             transition={{
               duration: 1,
               delay: 0.7,
               ease: "easeInOut",
             }}
+            className="mt-auto"
           >
             <Button
               href="/register"
@@ -71,7 +79,7 @@ export default function Lander() {
               size="large"
             />
           </motion.div>
-        </div>
+        </motion.div>
       </div>
       <div className="w-full h-screen absolute -z-10">
         <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.85)_0%,_rgba(255,255,255,0.5)_45%,_transparent_100%)]" />
@@ -93,7 +101,7 @@ export default function Lander() {
             y: 25,
             filter: "blur(20px)",
           }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{
             duration: 1,
             delay: 0.8,
