@@ -41,7 +41,13 @@ export default function Navbar() {
           TSS
         </Link>
 
-        <motion.ul className="list-none flex items-center gap-8 m-0 p-0 ">
+        <motion.ul
+          layout
+          transition={{
+            duration: 1,
+          }}
+          className={`list-none animate border-1 border-white/0 transition-all px-1 py-1  pl-4 ${scrolled && "bg-black/10 backdrop-blur-sm rounded-full border-black "} flex items-center gap-8 m-0 p-0 duration-300 `}
+        >
           {navItems.map((item, i) => (
             <motion.li
               key={item.label}
