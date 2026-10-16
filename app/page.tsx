@@ -1,5 +1,5 @@
 import Lander from "./components/Lander";
-import About from "./components/about";
+import About from "./components/About";
 
 export default function Home() {
   return (
