@@ -55,7 +55,10 @@ function WhoWeAre() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div
+      ref={ref}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+    >
       {/* Text */}
       <div className="space-y-6">
         <motion.div
@@ -74,7 +77,7 @@ function WhoWeAre() {
         >
           The Official Student Body of{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-stone-700 to-stone-400">
-            MCA · GNDU
+            CS Dept · GNDU
           </span>
         </motion.h2>
 
@@ -103,7 +106,7 @@ function WhoWeAre() {
               >
                 {tag}
               </span>
-            )
+            ),
           )}
         </motion.div>
       </div>
@@ -163,7 +166,10 @@ function WhatWeDo() {
   ];
 
   return (
-    <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div
+      ref={ref}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+    >
       {/* Image */}
       <motion.div
         initial={{ opacity: 0, scale: 0.92, x: -40 }}
@@ -227,12 +233,20 @@ function WhatWeDo() {
               key={item.title}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.08, ease: "easeOut" }}
+              transition={{
+                duration: 0.6,
+                delay: 0.3 + i * 0.08,
+                ease: "easeOut",
+              }}
               className="p-4 rounded-2xl border border-stone-100 bg-white/70 hover:shadow-md hover:border-stone-200 hover:-translate-y-0.5 transition-all duration-200 backdrop-blur-sm"
             >
               <span className="text-2xl">{item.icon}</span>
-              <p className="mt-1.5 font-semibold text-stone-800 text-sm">{item.title}</p>
-              <p className="text-stone-500 text-xs mt-0.5 leading-relaxed">{item.desc}</p>
+              <p className="mt-1.5 font-semibold text-stone-800 text-sm">
+                {item.title}
+              </p>
+              <p className="text-stone-500 text-xs mt-0.5 leading-relaxed">
+                {item.desc}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -282,9 +296,8 @@ function LegacySection() {
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="text-stone-600 text-lg max-w-2xl mx-auto leading-relaxed"
         >
-          Though our legacy spans decades, our registration in 2026 marked a
-          new era of official recognition and scaled impact across the
-          university.
+          Though our legacy spans decades, our registration in 2026 marked a new
+          era of official recognition and scaled impact across the university.
         </motion.p>
       </div>
 
@@ -295,7 +308,11 @@ function LegacySection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.15, ease: "easeOut" }}
+              transition={{
+                duration: 0.6,
+                delay: 0.3 + i * 0.15,
+                ease: "easeOut",
+              }}
               className="flex flex-col items-center"
             >
               <div className="w-20 h-20 rounded-full bg-gradient-to-br from-stone-800 to-stone-600 flex items-center justify-center shadow-xl">
@@ -312,7 +329,11 @@ function LegacySection() {
               <motion.div
                 initial={{ scaleX: 0 }}
                 animate={inView ? { scaleX: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.5 + i * 0.15, ease: "easeOut" }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.5 + i * 0.15,
+                  ease: "easeOut",
+                }}
                 style={{ originX: 0 }}
                 className="hidden md:block h-px w-24 bg-gradient-to-r from-stone-400 to-stone-300 mx-4"
               />
@@ -442,14 +463,18 @@ function Marquee() {
     "Innovation",
     "Community",
     "Excellence",
-    "GNDU · MCA",
-    "2026 ✦",
+    "GNDU",
+    "2026",
+    "✦",
   ];
   const doubled = [...items, ...items];
 
   return (
     <div className="overflow-hidden border-y border-stone-200 py-4 bg-stone-50/50">
-      <div ref={trackRef} className="flex gap-12 whitespace-nowrap will-change-transform">
+      <div
+        ref={trackRef}
+        className="flex gap-12 whitespace-nowrap will-change-transform"
+      >
         {doubled.map((item, i) => (
           <span
             key={i}
@@ -481,13 +506,13 @@ function AboutHero() {
         <Badge text="Technical Student Society" />
       </motion.div>
 
-      <h1 className="text-7xl lg:text-[10rem] font-extrabold tracking-tight leading-none">
+      <h1 className="text-7xl lg:text-[7rem] font-extrabold tracking-tight leading-none">
         {words.map((word, wi) =>
           word.split("").map((char, ci) => (
             <motion.span
               key={`${wi}-${ci}`}
               initial={{ opacity: 0, y: 60, filter: "blur(12px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{
                 duration: 0.7,
                 delay: wi * 0.4 + ci * 0.06,
@@ -497,32 +522,18 @@ function AboutHero() {
             >
               {char}
             </motion.span>
-          ))
+          )),
         )}
       </h1>
 
       <motion.p
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.8 }}
-        className="mt-6 text-stone-500 text-xl max-w-md leading-relaxed"
+        className="mt-1 text-stone-500 text-xl max-w-md leading-normal"
       >
         Where curiosity meets community, and ideas become impact.
       </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="mt-16 flex flex-col items-center gap-2"
-      >
-        <span className="text-xs text-stone-400 uppercase tracking-widest">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-stone-400 to-transparent"
-        />
-      </motion.div>
     </div>
   );
 }
@@ -535,12 +546,12 @@ export default function About() {
 
       <Marquee />
 
-      <div className="max-w-5xl mx-auto px-6 py-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* <div className="max-w-5xl mx-auto px-6 py-20 grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard value="10+" label="Years of Legacy" delay={0} />
         <StatCard value="2026" label="Official Registration" delay={0.1} />
         <StatCard value="50+" label="Events Organized" delay={0.2} />
         <StatCard value="∞" label="Ideas Sparked" delay={0.3} />
-      </div>
+      </div> */}
 
       <div className="max-w-5xl mx-auto px-6">
         <div className="h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent" />
@@ -550,7 +561,7 @@ export default function About() {
         <WhoWeAre />
       </div>
 
-      <Marquee />
+      {/* <Marquee /> */}
 
       <div className="max-w-6xl mx-auto px-6 py-24">
         <WhatWeDo />
@@ -568,4 +579,3 @@ export default function About() {
     </section>
   );
 }
-
