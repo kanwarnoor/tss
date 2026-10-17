@@ -63,7 +63,7 @@ function WhoWeAre() {
       <div className="space-y-6">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Badge text="Who We Are" />
@@ -71,7 +71,7 @@ function WhoWeAre() {
 
         <motion.h2
           initial={{ opacity: 0, x: -40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-stone-900"
         >
@@ -83,7 +83,7 @@ function WhoWeAre() {
 
         <motion.p
           initial={{ opacity: 0, x: -30 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-stone-600 text-lg leading-relaxed"
         >
@@ -92,20 +92,18 @@ function WhoWeAre() {
           academic curiosities with industry-leading innovation.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-          className="flex flex-wrap gap-3 pt-2"
-        >
+        <motion.div className="flex flex-wrap gap-3 pt-2">
           {["Hackathons", "Workshops", "Tech Fests", "Industry Connect"].map(
-            (tag) => (
-              <span
+            (tag, i) => (
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
                 key={tag}
                 className="px-4 py-1.5 rounded-full text-sm font-medium border border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100 transition-colors duration-200 cursor-default"
               >
                 {tag}
-              </span>
+              </motion.span>
             ),
           )}
         </motion.div>
@@ -113,8 +111,8 @@ function WhoWeAre() {
 
       {/* Image */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.92, x: 40 }}
-        animate={inView ? { opacity: 1, scale: 1, x: 0 } : {}}
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
         className="relative h-[480px] rounded-3xl overflow-hidden shadow-2xl group"
       >
@@ -172,8 +170,8 @@ function WhatWeDo() {
     >
       {/* Image */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.92, x: -40 }}
-        animate={inView ? { opacity: 1, scale: 1, x: 0 } : {}}
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={inView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 0.9, ease: "easeOut" }}
         className="relative h-[420px] rounded-3xl overflow-hidden shadow-2xl group order-last lg:order-first"
       >
@@ -197,7 +195,7 @@ function WhatWeDo() {
       <div className="space-y-6">
         <motion.div
           initial={{ opacity: 0, x: 40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Badge text="What We Do" />
@@ -205,7 +203,7 @@ function WhatWeDo() {
 
         <motion.h2
           initial={{ opacity: 0, x: 40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-stone-900"
         >
@@ -217,7 +215,7 @@ function WhatWeDo() {
 
         <motion.p
           initial={{ opacity: 0, x: 30 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          whileInView={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="text-stone-600 text-lg leading-relaxed"
         >
@@ -232,13 +230,13 @@ function WhatWeDo() {
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{
                 duration: 0.6,
                 delay: 0.3 + i * 0.08,
                 ease: "easeOut",
               }}
-              className="p-4 rounded-2xl border border-stone-100 bg-white/70 hover:shadow-md hover:border-stone-200 hover:-translate-y-0.5 transition-all duration-200 backdrop-blur-sm"
+              className="p-4 cursor-pointer rounded-2xl border border-stone-100 bg-white/70 hover:shadow-md hover:border-stone-200 hover:-translate-y-0.5 transition-all duration-200 backdrop-blur-sm"
             >
               <span className="text-2xl">{item.icon}</span>
               <p className="mt-1.5 font-semibold text-stone-800 text-sm">
@@ -567,11 +565,11 @@ export default function About() {
         <WhatWeDo />
       </div>
 
-      <div className="bg-stone-50/70 py-24 px-6">
+      {/* <div className="bg-stone-50/70 py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <LegacySection />
         </div>
-      </div>
+      </div> */}
 
       <div className="max-w-6xl mx-auto px-6 py-24">
         <Manifesto />
